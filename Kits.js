@@ -32,13 +32,13 @@ jm.id = function () {
 }
 // 获取十六进制随机颜色
 jm.color16 = function () {
-  let arr = ['1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f']
-  let a = jm.sjs(0, 14)
-  let b = jm.sjs(0, 14)
-  let c = jm.sjs(0, 14)
-  let d = jm.sjs(0, 14)
-  let e = jm.sjs(0, 14)
-  let f = jm.sjs(0, 14)
+  let arr = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f']
+  let a = jm.sjs(0, 15)
+  let b = jm.sjs(0, 15)
+  let c = jm.sjs(0, 15)
+  let d = jm.sjs(0, 15)
+  let e = jm.sjs(0, 15)
+  let f = jm.sjs(0, 15)
 
   return '#' + arr[a] + arr[b] + arr[c] + arr[d] + arr[e] + arr[f]
 }
