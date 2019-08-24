@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>微博发布效果</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .weibo {
+      width: 600px;
+      border: 1px solid #ccc;
+
+      margin: 100px auto;
+      padding: 10px;
+
+    }
+
+    .weibo-text {
+      width: 590px;
+      height: 140px;
+      padding: 5px;
+      border: 1px solid #ccc;
+      outline: none;
+      resize: none;
+    }
+
+    .weibo-text:focus {
+      border-color: #f60;
+    }
+
+    .weibo-btn {
+      width: 80px;
+      height: 30px;
+      background-color: #f90;
+      color: #fff;
+      border: 0 none;
+      margin-top: 5px;
+      border-radius: 3px;
+      cursor: pointer;
+      outline: 0 none;
+    }
+
+    .weibo-list {
+      padding-top: 10px;
+    }
+
+    .weibo-list li {
+      font-size: 14px;
+      line-height: 30px;
+      border-bottom: 1px dotted #ccc;
+      overflow: hidden;
+    }
+
+    .weibo-list li p {
+      float: left;
+    }
+
+    .weibo-list li span {
+      float: right;
+      cursor: pointer;
+    }
+
+    .weibo-list li input {
+      height: 24px;
+      line-height: 24px;
+      width: 300px;
+      font-size: 14px;
+      border: 0 none;
+    }
+
+    .time {
+      margin-right: 10px;
+      font-style: normal;
+      float: right;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="weibo">
+    <textarea class="weibo-text"></textarea>
+    <input class="weibo-btn" value="发布" type="button">
+    <ul class="weibo-list">
+      <!-- <li>
+        <p class="content">快来收了这九款用上就停不下来的应用吧！！</p>
+        <span class="del data-id">删除</span>
+        <span class="time">1997-05-18 00:00:00</span>
+
+      </li> -->
+    </ul>
+  </div>
+</body>
+<script src="../jq对象js(1)/jquery-2.2.2.js"></script>
+<script src="../Kits.js"></script>
+<script>
+  //
+  // 获取浏览器记录，生成数组
+  let arr = jm.getLocalDataArray('weibo2')
+  // console.log(arr)
+  // 获取元素
+  let text = $('.weibo-text');
+  let btn = $('.weibo-btn')
+  let ul = $('.weibo-list')
+  // 根据数组生成新的li内容
+  arr.forEach((e) => {
+    ul.append(`<li>
+        <p class="content">${e.content}</p>
+        <span class="del" data-id="${e.id}">删除</span>
+        <span class="time">${e.time}</span>
+
+      </li>`)
+  });
+  // 入口函数
+  $(() => {
+    // 注册事件
+    // 点击事件
+    btn.on('click', () => {
+      // 获取文本域内容
+      let content = text.val()
+      // 如果内容为空，提示不能上传
+      if (content.trim().length === 0) {
+        alert('微博内容不能为空')
+        return
+      }
+      // 根据内容，id，时间生成新li元素
+      let id = jm.id()
+      let time = jm.time()
+      let li = $(`<li>
+        <p class="content">${content}</p>
+        <span class="del" data-id="${id}">删除</span>
+        <span class="time">${time}</span>
+
+      </li>`)
+      ul.prepend(li)
+      // 清空文本域
+      text.val('')
+      // 把li用键值对形式打包在一个对象中
+      let data = {
+        content: content,
+        id: id,
+        time: time
+      }
+      // 将对象添加到浏览器，key名为weibo2
+      jm.beforeDataIntoArray('weibo2', data)
+    })
+    // 键盘事件
+    text.on('keydown', e => {
+      // 按下ctrl➕回车，执行btn点击1事件
+      if (e.keyCode === 13 && e.ctrlKey) {
+        btn.click()
+      }
+    })
+    // 点击删除
+    // 委托事件
+    ul.on('click', '.del', function () {
+      // 删除页面
+      $(this).parent().remove()
+      // 根据id删除掉浏览器中对应的数据
+      jm.deleteLocalDataById('weibo2', this.dataset.id)
+    })
+
+  })
+</script>
+
+</html>
