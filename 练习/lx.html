@@ -6,16 +6,31 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
+  <style>
+    .box {
+      background-color: red;
+      margin-bottom: 20px;
+    }
+  </style>
 </head>
+<div class="box"></div>
+<div class="box"></div>
+<div class="box"></div>
+<div class="box"></div>
 
 <body>
 
 </body>
 <script src="../Kits.js"></script>
+
+<script src="../jqury.mine.js"></script>
 <script>
-  console.log(jm.color16())
-  var body = document.body
-  body.style.backgroundColor = jm.rgbColor()
+  console.log($('.box'))
+  $('.box').each((i, e) => {
+    e.innerHTML = i
+  })
+  console.log($('.box').css('backgroundColor'))
+  $('.box').css('backgroundColor', 'blue')
 </script>
 
 </html>

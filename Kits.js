@@ -20,6 +20,7 @@ jm.time = function () {
   return year + '-' + month + "-" + day + ' ' + hours + ':' + minutes + ':' + seconds
 }
 // ------------------------------------jm.随机数，随机id------------------------
+
 //3. n~m随机数
 jm.sjs = function (n, m) {
   return Math.floor(Math.random() * (m + 1 - n) + n)
