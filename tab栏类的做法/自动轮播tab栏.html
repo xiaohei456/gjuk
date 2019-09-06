@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <!-- 引入css -->
+  <link rel="stylesheet" href="./css/tab.css">
+</head>
+
+<body>
+  <!-- html样板开始 -->
+  <div class="box">
+    <ul class="nav-items">
+      <li class="item aqua">影视</li>
+      <li class="item">音乐</li>
+      <li class="item">MV</li>
+    </ul>
+    <div class="nav-content">
+      <div class="content show">影视内容</div>
+      <div class="content">音乐内容</div>
+      <div class="content">MV内容</div>
+    </div>
+  </div>
+  <!-- html样板结束 -->
+</body>
+<!-- 引入js -->
+<script src="./js/tab.js"></script>
+<script src="./js/自动轮播tab.js"></script>
+<script>
+  let tab = new AutoTab('.box', 1500)
+</script>
+
+</html>

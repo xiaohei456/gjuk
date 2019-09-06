@@ -13,24 +13,47 @@
     }
   </style>
 </head>
-<div class="box"></div>
-<div class="box"></div>
-<div class="box"></div>
-<div class="box"></div>
+<div class="big">
+  <div class="box"></div>
+  <ul>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+  </ul>
+  <div class="box"></div>
+  <div class="box"></div>
+  <div class="box"></div>
+</div>
+
 
 <body>
 
 </body>
 <script src="../Kits.js"></script>
 
-<script src="../jqury.mine.js"></script>
+<script src="../类方式创建jqury.js"></script>
 <script>
   console.log($('.box'))
   $('.box').each((i, e) => {
     e.innerHTML = i
   })
-  console.log($('.box').css('backgroundColor'))
   $('.box').css('backgroundColor', 'blue')
+  $('.big').on('click', '.box', function () {
+    $('body').css('backgroundColor', 'red')
+  })
+  // console.log(123)
+  // }) // $('.box').on('click', function () {
+
+  // $('ul').on('click', 'li', function () {
+  //   console.log(this)
+  // })
+  // let li = document.createElement('li')
+  // li.innerText = 'aajm';
+
+  // $('ul').append(li)
 </script>
 
 </html>

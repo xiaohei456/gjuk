@@ -1,0 +1,31 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+.box {
+  width: 400px;
+  height: 400px;
+  border: 1px solid #000;
+  margin: 100px auto;
+}
+.box ul {
+  list-style: none;
+  height: 40px;
+  border-bottom: 1px solid #000;
+}
+.box ul li {
+  float: left;
+  line-height: 40px;
+  padding: 0 20px;
+  border-right: 1px solid #000;
+}
+.box ul .aqua {
+  background-color: aqua;
+}
+.box .nav-content .content {
+  height: 369px;
+  display: none;
+}
+.box .nav-content .show {
+  display: block;
+}
