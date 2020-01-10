@@ -10,13 +10,16 @@ jm.ten = function (s) {
 }
 //2. 调用此函数返回当前时间
 jm.time = function () {
+  let ten = function (s) {
+    return s < 10 ? '0' + s : s
+  }
   var date = new Date()
   var year = date.getFullYear()
-  var month = jm.ten(date.getMonth() + 1)
-  var day = jm.ten(date.getDate())
-  var hours = jm.ten(date.getHours())
-  var minutes = jm.ten(date.getMinutes())
-  var seconds = jm.ten(date.getSeconds())
+  var month = ten(date.getMonth() + 1)
+  var day = ten(date.getDate())
+  var hours = ten(date.getHours())
+  var minutes = ten(date.getMinutes())
+  var seconds = ten(date.getSeconds())
   return year + '-' + month + "-" + day + ' ' + hours + ':' + minutes + ':' + seconds
 }
 // ------------------------------------jm.随机数，随机id------------------------
